@@ -75,7 +75,7 @@ img { display: block; max-width: 100%; }
 /* Copertina statica iniziale (frame 0 esatto del video) */
 .busta-statica {
   position: absolute; inset: 0;
-  background: url('assets/busta-sigillo.jpg?v=fullhd') center/cover no-repeat;
+  background: url('assets/busta-sigillo.jpg?v=kling_v2') center/cover no-repeat;
   z-index: 2;
   transition: opacity 0.2s ease-out;
   pointer-events: none;
@@ -390,7 +390,7 @@ section {
 <div id="busta" role="button" tabindex="0" aria-label="Tocca per aprire l'invito">
   <!-- Video dell'apertura autentica con il lembo che si alza e il bagliore caldo -->
   <video id="video-apertura" class="video-apertura" preload="auto" playsinline muted>
-    <source src="assets/apertura-busta.mp4?v=fullhd" type="video/mp4">
+    <source src="assets/apertura-busta-omni-4k.mp4?v=omni_white_4k" type="video/mp4">
   </video>
 
   <!-- Copertina iniziale statica (corrisponde esattamente al frame 0 del video) -->
@@ -541,17 +541,17 @@ function apri(e){
     heroVid.play().catch(function(){});
   }
 
-  // 4. Verso la fine dell'apertura (quando il bagliore bianco invade lo schermo a ~1650ms):
+  // 4. Verso la fine dell'apertura (quando il bagliore bianco invade lo schermo a ~1800ms):
   //    sfuma via la busta e rivela il sito
   setTimeout(function(){
     busta.classList.add('via');
     document.body.classList.remove('bloccato');
-  }, 1650);
+  }, 1800);
 
   // 5. Rimuove la busta dal DOM al completamento della transizione
   setTimeout(function(){
     if(busta && busta.parentNode) busta.remove();
-  }, 2200);
+  }, 2400);
 
   // 6. Avvia la musica protetta da gesture
   try { avviaMusica(); } catch(e){ btnAudio.classList.add('pronto','silenzioso'); }
